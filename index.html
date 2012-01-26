@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <title>chenjenping's site - challenge jennet & ping</title>
+
+        <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBACAAAAAACwAAAAFgAAACgAAAAQAAAAIAAAAAEAAQAAAAAAQAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAiLtVAB/4AAA//AAAcA4AAOfnAADP8wAAzDMAAMwDAADMAwAAzAMAAMwDAADMMwAAz/MAAOfnAABwDgAAP/wAAB/4AADgBwAAwAMAAI/xAAAYGAAAMAwAADPMAAAz/AAAM/wAADP8AAAz/AAAM8wAADAMAAAYGAAAj/EAAMADAADgBwAA">
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/md5-min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="stylesheets/core.css">
+
+        <script type="text/javascript">
+            var $curr;
+            var count = 3;
+
+            function getCookie(cookie_name)
+            {
+                if (document.cookie.length > 0)
+                {
+                    var raw_cookie = document.cookie.split('\;');
+                    for (item in raw_cookie)
+                    {
+                        var parsed_cookie = raw_cookie[item].split('=');
+                        if (parsed_cookie[0] == cookie_name)
+                        {
+                            return unescape(parsed_cookie[1]);
+                        }
+                    }
+                }
+                return null;
+            }
+
+            function setCookie(cookie_name, value, expires)
+            {
+                var exdate = new Date();
+                exdate.setDate(exdate.getDate() + expires);
+                document.cookie = cookie_name + '=' + escape(value) + ((expires == null) ? '' : ';expires=' + exdate.toGMTString);
+            }
+
+            function checkCookie()
+            {
+                var useremail = getCookie('useremail');
+                if (useremail != null)
+                {
+                    $('button#checkin, div#checkin_box').remove();
+                    var hash = hex_md5(useremail);
+                    var r_profile_img_url = 'http://www.gravatar.com/avatar/' + hash + '?s=56&d=retro';
+                    $('div#head').append('<img id="profile_img" src="' + r_profile_img_url + '">');
+                }
+            }
+
+            $(function()
+            {
+                checkCookie();
+                $('span.sub').click(function()
+                {
+                    $curr = $(this);
+                    $curr.animate({fontSize: '0'}, 800);
+                    $curr.fadeOut(800);
+                    count--;
+                    setTimeout(function()
+                    {
+                        $curr.remove();
+                        if (count == 0)
+                        {
+                            $('span#site').fadeIn(400);
+                        }
+                    }, 800);
+                });
+
+                $('button#checkin').click(function()
+                {
+                    $('div#modal').fadeIn(800);
+                    $('div#checkin_box').show();
+                    $('input#email').focus();
+                });
+
+                $('button#go').click(function()
+                {
+                    var email = $('input#email').val();
+                    if (email != null && email != '')
+                    {
+                        var hash = hex_md5(email);
+                        $('div#email_section, button#go, button#checkin').remove();
+                        var profile_img_url = 'http://www.gravatar.com/avatar/' + hash + '?s=56&d=mm';
+                        var i_profile_img_url = 'http://www.gravatar.com/avatar/' + hash + '?s=56&d=identicon';
+                        var m_profile_img_url = 'http://www.gravatar.com/avatar/' + hash + '?s=56&d=monsterid';
+                        var w_profile_img_url = 'http://www.gravatar.com/avatar/' + hash + '?s=56&d=wavatar';
+                        var r_profile_img_url = 'http://www.gravatar.com/avatar/' + hash + '?s=56&d=retro';
+                        $('div#checkin_box').prepend('<img src="' + profile_img_url + '&f=y">' +
+                                                     '<img src="' + i_profile_img_url + '&f=y">' +
+                                                     '<img src="' + m_profile_img_url + '&f=y">' +
+                                                     '<img src="' + w_profile_img_url + '&f=y">' +
+                                                     '<img src="' + r_profile_img_url + '&f=y">');
+                        $('div#head').append('<img id="profile_img" src="' + r_profile_img_url + '">');
+                        setCookie('useremail', email);
+                    }
+                });
+
+                $('span.close').click(function()
+                {
+                    $('div#modal').fadeOut(800);
+                    $('div#modal > div').hide();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="head">
+            <header>
+                <h1>ch<span class="sub">all</span>en<span class="sub">ge </span>jen<span class="sub">net & </span><span id="ping">ping</span><span id="site">'s site</span></h1>
+            </header>
+            <button id="checkin">check in</button>
+        </div>
+        <div id="wrapper">
+            <section>
+            </section>
+            <footer>
+                <span>&copy; challenge jennet & ping. Designed by chenjenping. Powered by github.</span>
+            </footer>
+        </div>
+        <div id="modal">
+            <div id="checkin_box">
+                <div id="email_section">
+                    <label id="email_label" for="email">email:</label><br>
+                    <input id="email" name="email" type="text">
+                </div>
+                <button id="go">go</button>
+                <span class="close">x</span>
+            </div>
+        </div>
+    </body>
+</html>
