@@ -37,7 +37,7 @@
             {
                 var exdate = new Date();
                 exdate.setDate(exdate.getDate() + expires);
-                document.cookie = cookie_name + '=' + escape(value) + ';domain=.chenjenping.co.cc;path=/' + ((expires == null) ? '' : ';expires=' + exdate.toGMTString);
+                document.cookie = cookie_name + '=' + escape(value) + ';path=/' + ((expires == null) ? '' : ';expires=' + exdate.toGMTString);
             }
 
             function checkCookie()
