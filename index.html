@@ -8,11 +8,14 @@
         <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBACAAAAAACwAAAAFgAAACgAAAAQAAAAIAAAAAEAAQAAAAAAQAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAiLtVAB/4AAA//AAAcA4AAOfnAADP8wAAzDMAAMwDAADMAwAAzAMAAMwDAADMMwAAz/MAAOfnAABwDgAAP/wAAB/4AADgBwAAwAMAAI/xAAAYGAAAMAwAADPMAAAz/AAAM/wAADP8AAAz/AAAM8wAADAMAAAYGAAAj/EAAMADAADgBwAA">
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../../../www/php/ntu.phpfogapp.com/js/jquery-1.7.1.min.js"></script>
         <script type="text/javascript" src="js/md5-min.js"></script>
 
         <link rel="stylesheet" type="text/css" href="stylesheets/core.css">
 
         <script type="text/javascript">
+            var last_tab;
+            var cur_tab = 'wg';
             var $curr;
             var count = 3;
 
@@ -54,6 +57,8 @@
 
             $(function()
             {
+                $('li#' + cur_tab).css({'z-index': '8', 'box-shadow': 'none', 'background': '#dddddd', 'color': '#444444'});
+                $('section#' + cur_tab + '_board').show();
                 checkCookie();
                 $('span.sub').click(function()
                 {
@@ -105,6 +110,26 @@
                     $('div#modal').fadeOut(800);
                     $('div#modal > div').hide();
                 });
+
+                $('li.tab').click(function()
+                {
+                    last_tab = cur_tab;
+                    cur_tab = $(this).attr('id');
+                    $('li#' + last_tab).css({'z-index': '0', 'box-shadow': '0 0 8px green', 'background': '#888888', 'color': '#dddddd'});
+                    $('section#' + last_tab + '_board').hide();
+                    $('li#' + cur_tab).css({'z-index': '8', 'box-shadow': 'none', 'background': '#dddddd', 'color': '#444444'});
+                    $('section#' + cur_tab + '_board').show();
+                });
+
+                $('li.tab').focus(function()
+                {
+                    last_tab = cur_tab;
+                    cur_tab = $(this).attr('id');
+                    $('li#' + last_tab).css({'z-index': '0', 'box-shadow': '0 0 8px green', 'background': '#888888', 'color': '#dddddd'});
+                    $('section#' + last_tab + '_board').hide();
+                    $('li#' + cur_tab).css({'z-index': '8', 'box-shadow': 'none', 'background': '#dddddd', 'color': '#444444'});
+                    $('section#' + cur_tab + '_board').show();
+                });
             });
         </script>
     </head>
@@ -116,7 +141,30 @@
             <button id="checkin">check in</button>
         </div>
         <div id="wrapper">
-            <section>
+            <nav>
+                <ul>
+                    <li id="wg" class="tab" tabindex="4">work & goal</li>
+                    <li id="ui" class="tab" tabindex="8">ui</li>
+                    <li id="news" class="tab" tabindex="12">news</li>
+                    <li id="act" class="tab" tabindex="16">activity</li>
+                    <li id="about" class="tab" tabindex="20">about me</li>
+                </ul>
+            </nav>
+            <section id="wg_board" class="board">
+                <h2>work</h2>
+                <a href="http://www.chirpy.tw/" target="_blank">chirpy 台大活動廣場</a>
+                <h2>goal</h2>
+                <p>finding someone who can accept any crazy idea about the web to be the partner</p>
+            </section>
+            <section id="ui_board" class="board">
+            </section>
+            <section id="news_board" class="board">
+            </section>
+            <section id="act_board" class="board">
+            </section>
+            <section id="about_board" class="board">
+                <h2>google+</h2>
+                <a id="gpprofile" href="https://plus.google.com/u/0/103208432250092330084/about" target="_blank">google+ profile</a>
             </section>
             <footer>
                 <span>&copy; challenge jennet & ping. Designed by chenjenping. Powered by github.</span>

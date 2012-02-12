@@ -6,6 +6,11 @@ body
     font-family: Verdana, Helvetica, sans-serif;
 }
 
+p
+{
+    margin: 0;
+}
+
 label
 {
     font-weight: bold;
@@ -65,7 +70,7 @@ button:hover
 
 div#head
 {
-    z-index: 4;
+    z-index: 8;
     height: 64px;
     box-shadow: 0 0 8px yellow;
     -moz-box-shadow: 0 0 8px yellow;
@@ -88,18 +93,44 @@ div#wrapper
 
 section
 {
-    min-height: 544px;
-    border-radius: 4px;
-    -moz-border-radius: 4px;
-    -o-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -ms-border-radius: 4px;
+    position: relative;
+    z-index: 4;
+    display: none;
+    padding: 8px 16px;
+    min-height: 520px;
+    border-radius: 0 4px 4px 4px;
+    -moz-border-radius: 0 4px 4px 4px;
+    -o-border-radius: 0 4px 4px 4px;
+    -webkit-border-radius: 0 4px 4px 4px;
+    -ms-border-radius: 0 4px 4px 4px;
     box-shadow: 0 0 8px green;
     -moz-box-shadow: 0 0 8px green;
     -o-box-shadow: 0 0 8px green;
     -webkit-box-shadow: 0 0 8px green;
     -ms-box-shadow: 0 0 8px green;
     background: #dddddd;
+}
+
+section.board > h2
+{
+    margin: 4px 0;
+}
+
+section.board > a
+{
+    margin: 0 0 0 24px;
+    text-decoration: none;
+    color: #444444;
+}
+
+section.board > a:hover
+{
+    text-decoration: underline;
+}
+
+section.board > p
+{
+    margin: 0 0 0 24px;
 }
 
 footer
@@ -144,6 +175,36 @@ button#checkin
     padding: 4px;
 }
 
+nav > ul
+{
+    margin: 0 0 0 -4px;
+    padding: 0;
+    list-style-type: none;
+}
+
+li.tab
+{
+    position: relative;
+    display: inline-block;
+    margin: 0 4px;
+    padding: 4px 8px;
+    width: 88px;
+    border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+    -o-border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+    -ms-border-radius: 4px 4px 0 0;
+    box-shadow: 0 0 8px green;
+    -moz-box-shadow: 0 0 8px green;
+    -o-box-shadow: 0 0 8px green;
+    -webkit-box-shadow: 0 0 8px green;
+    -ms-box-shadow: 0 0 8px green;
+    background: #888888;
+    cursor: pointer;
+    text-align: center;
+    color: #dddddd;
+}
+
 footer > span
 {
     color: #dddddd;
@@ -154,7 +215,7 @@ div#modal
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 8;
+    z-index: 12;
     display: none;
     min-width: 100%;
     height: 100%;
