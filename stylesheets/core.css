@@ -188,7 +188,7 @@ li.tab
     display: inline-block;
     margin: 0 4px;
     padding: 4px 8px;
-    width: 88px;
+    width: 120px;
     border-radius: 4px 4px 0 0;
     -moz-border-radius: 4px 4px 0 0;
     -o-border-radius: 4px 4px 0 0;
@@ -202,6 +202,7 @@ li.tab
     background: #888888;
     cursor: pointer;
     text-align: center;
+    font-size: 16px;
     color: #dddddd;
 }
 
