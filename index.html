@@ -7,15 +7,15 @@
 
         <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBACAAAAAACwAAAAFgAAACgAAAAQAAAAIAAAAAEAAQAAAAAAQAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAiLtVAB/4AAA//AAAcA4AAOfnAADP8wAAzDMAAMwDAADMAwAAzAMAAMwDAADMMwAAz/MAAOfnAABwDgAAP/wAAB/4AADgBwAAwAMAAI/xAAAYGAAAMAwAADPMAAAz/AAAM/wAADP8AAAz/AAAM8wAADAMAAAYGAAAj/EAAMADAADgBwAA">
 
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script type="text/javascript" src="../../../www/php/ntu.phpfogapp.com/js/jquery-1.7.1.min.js"></script>
-        <script type="text/javascript" src="js/md5-min.js"></script>
-
         <link rel="stylesheet" type="text/css" href="stylesheets/core.css">
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+        <script type="text/javascript" src="js/md5-min.js"></script>
 
         <script type="text/javascript">
             var last_tab;
-            var cur_tab = 'wg';
+            var cur_tab = 'about_me';
             var $curr;
             var count = 3;
 
@@ -103,22 +103,16 @@
                         $('div#head').append('<img id="profile_img" src="' + r_profile_img_url + '">');
                         setCookie('useremail', email);
                     }
+                    else
+                    {
+                        $('input#email').focus();
+                    }
                 });
 
                 $('span.close').click(function()
                 {
                     $('div#modal').fadeOut(800);
                     $('div#modal > div').hide();
-                });
-
-                $('li.tab').click(function()
-                {
-                    last_tab = cur_tab;
-                    cur_tab = $(this).attr('id');
-                    $('li#' + last_tab).css({'z-index': '0', 'box-shadow': '0 0 8px green', 'background': '#888888', 'color': '#dddddd'});
-                    $('section#' + last_tab + '_board').hide();
-                    $('li#' + cur_tab).css({'z-index': '8', 'box-shadow': 'none', 'background': '#dddddd', 'color': '#444444'});
-                    $('section#' + cur_tab + '_board').show();
                 });
 
                 $('li.tab').focus(function()
@@ -132,39 +126,131 @@
                 });
             });
         </script>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-33562413-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
     </head>
     <body>
         <div id="head">
             <header>
                 <h1>ch<span class="sub">all</span>en<span class="sub">ge </span>jen<span class="sub">net & </span><span id="ping">ping</span><span id="site">'s site</span></h1>
+                <button id="checkin" class="ff gray">check in</button>
             </header>
-            <button id="checkin">check in</button>
         </div>
         <div id="wrapper">
             <nav>
                 <ul>
-                    <li id="wg" class="tab" tabindex="4">work & goal</li>
+                    <li id="about_me" class="tab" tabindex="4">about me</li>
                     <li id="ui" class="tab" tabindex="8">ui</li>
                     <li id="news" class="tab" tabindex="12">news</li>
-                    <li id="act" class="tab" tabindex="16">activity</li>
-                    <li id="about" class="tab" tabindex="20">about me</li>
+                    <li id="activity" class="tab" tabindex="16">activity</li>
+                    <li id="info" class="tab" tabindex="20">info</li>
                 </ul>
             </nav>
-            <section id="wg_board" class="board">
-                <h2>work</h2>
-                <a href="http://www.chirpy.tw/" target="_blank">chirpy 台大活動廣場</a>
-                <h2>goal</h2>
-                <p>finding someone who can accept any crazy idea about the web to be the partner</p>
+            <section id="about_me_board" class="board">
+                <h2>interested in</h2>
+                <p>building useful & cool website, <a href="http://www.chenjenping.co.cc/rubik/" target="_blank">rubik's cube</a></p>
+                <br>
+                <h2>using</h2>
+                <p>front end: html, css, jquery</p>
+                <p>back end: php, ror</p>
+                <br>
+                <h2>learning</h2>
+                <p>front-end mvc, ui/ux, internet security</p>
+                <br>
+                <h2>previously working on</h2>
+                <a class="independent" href="http://www.chirpy.tw/" target="_blank">chirpy 台大活動廣場</a>
+                <br><br>
+                <h2>want to</h2>
+                <p>improve the world with these skills</p>
+                <br>
             </section>
             <section id="ui_board" class="board">
             </section>
             <section id="news_board" class="board">
             </section>
-            <section id="act_board" class="board">
+            <section id="activity_board" class="board">
+                <table id="schedule_table">
+                    <caption>七月</caption>
+                    <tr>
+                        <th>一</th>
+                        <th>二</th>
+                        <th>三</th>
+                        <th>四</th>
+                        <th>五</th>
+                        <th>六</th>
+                        <th>日</th>
+                    </tr>
+                    <tr>
+                        <td><span></span></td>
+                        <td><span></span></td>
+                        <td><span></span></td>
+                        <td><span></span></td>
+                        <td><span></span></td>
+                        <td><span></span></td>
+                        <td><span>1</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>2</span></td>
+                        <td><span>3</span></td>
+                        <td><span>4</span></td>
+                        <td><span>5</span></td>
+                        <td><span>6</span></td>
+                        <td><span>7</span></td>
+                        <td><span>8</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>9</span></td>
+                        <td><span>10</span></td>
+                        <td><span>11</span></td>
+                        <td><span>12</span></td>
+                        <td><span>13</span></td>
+                        <td><span>14</span></td>
+                        <td><span>15</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>16</span></td>
+                        <td><span>17</span></td>
+                        <td><span>18</span></td>
+                        <td><span>19</span></td>
+                        <td><span>20</span></td>
+                        <td><span>21</span></td>
+                        <td><span>22</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>23</span></td>
+                        <td><span>24</span></td>
+                        <td><span>25</span></td>
+                        <td><span>26</span></td>
+                        <td><span>27</span></td>
+                        <td><span>28</span></td>
+                        <td><span>29</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>30</span></td>
+                        <td><span>31</span></td>
+                        <td><span></span></td>
+                        <td><span></span></td>
+                        <td><span></span></td>
+                        <td><span></span></td>
+                        <td><span></span></td>
+                    </tr>
+                </table>
             </section>
-            <section id="about_board" class="board">
+            <section id="info_board" class="board">
                 <h2>google+</h2>
-                <a id="gpprofile" href="https://plus.google.com/u/0/103208432250092330084/about" target="_blank">google+ profile</a>
+                <a id="gpprofile" class="independent" href="https://plus.google.com/u/0/103208432250092330084/about" target="_blank">google+ profile</a>
+                <br><br>
+                <h2>site</h2>
+                <a class="independent" href="http://chenjenping.orgfree.com/" target="_blank">old site of chenjenping</a>
             </section>
             <footer>
                 <span>&copy; challenge jennet & ping. Designed by chenjenping. Powered by github.</span>
@@ -176,7 +262,7 @@
                     <label id="email_label" for="email">email:</label><br>
                     <input id="email" name="email" type="text">
                 </div>
-                <button id="go">go</button>
+                <button id="go" class="ff green">go</button>
                 <span class="close">x</span>
             </div>
         </div>
