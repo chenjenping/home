@@ -89,18 +89,19 @@
                     if (email != null && email != '')
                     {
                         var hash = hex_md5(email);
-                        $('div#email_section, button#go, button#checkin').remove();
+                        $('div#checkin_box, button#checkin').hide();
                         var profile_img_url = 'http://www.gravatar.com/avatar/' + hash + '?s=56&d=mm';
                         var i_profile_img_url = 'http://www.gravatar.com/avatar/' + hash + '?s=56&d=identicon';
                         var m_profile_img_url = 'http://www.gravatar.com/avatar/' + hash + '?s=56&d=monsterid';
                         var w_profile_img_url = 'http://www.gravatar.com/avatar/' + hash + '?s=56&d=wavatar';
                         var r_profile_img_url = 'http://www.gravatar.com/avatar/' + hash + '?s=56&d=retro';
-                        $('div#checkin_box').prepend('<img src="' + profile_img_url + '&f=y">' +
+                        $('div#img_selecting_box').prepend('<img src="' + profile_img_url + '&f=y">' +
                                                      '<img src="' + i_profile_img_url + '&f=y">' +
                                                      '<img src="' + m_profile_img_url + '&f=y">' +
                                                      '<img src="' + w_profile_img_url + '&f=y">' +
                                                      '<img src="' + r_profile_img_url + '&f=y">');
-                        $('div#head').append('<img id="profile_img" src="' + r_profile_img_url + '">');
+                        $('div#img_selecting_box').show();
+                        $('header').append('<img id="profile_img" src="' + r_profile_img_url + '">');
                         setCookie('useremail', email);
                     }
                     else
@@ -263,6 +264,9 @@
                     <input id="email" name="email" type="text">
                 </div>
                 <button id="go" class="ff green">go</button>
+                <span class="close">x</span>
+            </div>
+            <div id="img_selecting_box">
                 <span class="close">x</span>
             </div>
         </div>
